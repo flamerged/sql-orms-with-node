@@ -1,5 +1,6 @@
 const db = require('./db');
 const { Movie, Person } = db.models;
+const { op } = db.sequelize;
 
 (async () => {
     //syncs all tables
@@ -27,6 +28,15 @@ const { Movie, Person } = db.models;
         console.log(person.toJSON());
         const movieById = await Movie.findByPk(2);
         console.log(movieById.toJSON());
+        const movies = await Movie.findAll({
+            attributes: ['id', 'title'], // return only id and title
+            where: {
+                isAvailableOnVHS: true
+            }
+        });
+        console.log(movies.map(movie => movie.toJSON()));
+        const somethingtodelete = await Movie.findByPk(2);
+        somethingtodelete.destroy();
     } catch (error) {
         if (error.name === 'SequelizeValidationError') {
             const errors = error.errors.map(err => err.message);
