@@ -1,5 +1,5 @@
 const db = require('./db');
-const { Movie } = db.models;
+const { Movie, Person } = db.models;
 
 (async () => {
     //syncs all tables
@@ -20,6 +20,13 @@ const { Movie } = db.models;
             isAvailableOnVHS: true
         });
         console.log(movie2.toJSON());
+        const person = await Person.create({
+            firstName: 'Tom',
+            lastName: 'Hanks'
+        });
+        console.log(person.toJSON());
+        const movieById = await Movie.findByPk(2);
+        console.log(movieById.toJSON());
     } catch (error) {
         if (error.name === 'SequelizeValidationError') {
             const errors = error.errors.map(err => err.message);

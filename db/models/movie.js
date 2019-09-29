@@ -14,11 +14,10 @@ module.exports = sequelize => {
                 allowNull: false,
                 validate: {
                     notNull: {
-                        msg: 'Please provide a value for "title"'
+                        msg: 'Please provide a value for THIS SUCKS "title"'
                     },
                     notEmpty: {
-                        // custom error message
-                        msg: 'Please provide a value for "title"'
+                        msg: 'Please provide a value non empty for "title"'
                     }
                 }
             },
@@ -27,7 +26,7 @@ module.exports = sequelize => {
                 allowNull: false,
                 validate: {
                     notNull: {
-                        msg: 'Please provide a value for "title"'
+                        msg: 'Please provide a value for "runtime"'
                     },
                     min: {
                         args: 1,
@@ -41,7 +40,7 @@ module.exports = sequelize => {
                 allowNull: false,
                 validate: {
                     notNull: {
-                        msg: 'Please provide a value for "title"'
+                        msg: 'Please provide a value for "releaseDate"'
                     },
                     isAfter: {
                         args: '1895-12-27',
@@ -56,7 +55,7 @@ module.exports = sequelize => {
                 defaultValue: false,
                 validate: {
                     notNull: {
-                        msg: 'Please provide a value for "title"'
+                        msg: 'Please provide a value for "isAvailable on VHS"'
                     }
                 }
             }
